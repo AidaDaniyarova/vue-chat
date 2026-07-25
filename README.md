@@ -1,95 +1,379 @@
 # VueChat 💬
 
-A production-quality, Discord-styled real-time chat app built with **Vue 3**, **Pinia**, **Tailwind CSS**, and **Socket.IO**.
+A production-quality, Discord-inspired real-time chat application built with **Vue 3**, **Pinia**, **Tailwind CSS**, and **Socket.IO**.
 
-## Features
+> A modern full-stack chat application showcasing real-time communication, responsive UI design, and scalable frontend architecture using the Vue ecosystem.
 
-- 🎨 Discord-inspired UI with Tailwind CSS
-- 💬 Distinct chat bubbles for your messages vs. everyone else's
-- 👥 Live sidebar of online users, with auto-generated avatars (DiceBear)
-- 🏠 Multiple rooms: General, Vue, Gaming, Random - with per-room history
+![VueChat desktop view](assets/desktop.png)
+
+<p align="center">
+
+![Vue](https://img.shields.io/badge/Vue-3-42b883?logo=vuedotjs&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
+![Pinia](https://img.shields.io/badge/Pinia-State%20Management-yellow)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-Realtime-black?logo=socketdotio)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+</p>
+
+---
+
+# ✨ Features
+
+- 🎨 Discord-inspired modern interface
+- 💬 Distinct incoming and outgoing chat bubbles
+- 👥 Live online user list with automatically generated avatars (DiceBear)
+- 🏠 Multiple chat rooms with independent message history
 - 😀 Emoji picker
-- 📜 Smart auto-scroll (only interrupts you with a toast if you've scrolled up)
+- ⌨️ Live typing indicators
+- 📜 Smart auto-scroll with new-message toast notifications
 - 🕒 Message timestamps
-- 🌙 Light / dark mode, remembered across visits
-- 📱 Fully responsive - collapsible drawers for rooms and users on mobile
-- ⌨️ Live "is typing…" indicator
-- 🔔 New-message toast when you're scrolled away from the bottom
+- 🌙 Light & Dark mode (saved between visits)
+- 📱 Fully responsive mobile layout with collapsible sidebars
+- ⚡ Real-time communication powered by Socket.IO
 
-## Tech stack
+---
 
-| Layer      | Tech                                             |
-| ---------- | ------------------------------------------------ |
-| Frontend   | Vue 3, Vite, Vue Router, Pinia, Tailwind CSS v4   |
-| Real-time  | Socket.IO (client + server)                      |
-| Backend    | Node.js, Express                                 |
-| Avatars    | [DiceBear](https://www.dicebear.com/) (no uploads needed) |
-| Emoji      | [emoji-picker-element](https://github.com/nolanlawson/emoji-picker-element) |
+# 📸 Screenshots
 
-## Project structure
+| Chat | Mobile | Dark Mode |
+|------|--------|-----------|
+| ![Desktop](assets/desktop-chat.png) | ![Mobile](assets/mobile.png) | ![Dark](assets/darkmode.png) |
 
-```
+---
+
+# 🚀 Tech Stack
+
+| Layer | Technology |
+|--------|------------|
+| Frontend | Vue 3, Vite, Vue Router |
+| State Management | Pinia |
+| Styling | Tailwind CSS v4 |
+| Backend | Node.js, Express |
+| Real-time | Socket.IO |
+| Avatars | DiceBear API |
+| Emoji Picker | emoji-picker-element |
+
+---
+
+# 📂 Project Structure
+
+```text
 vue-chat/
-├── client/                 # Vue 3 frontend
+├── client/
 │   ├── src/
-│   │   ├── components/     # Sidebar, ChatWindow, ChatBubble, ChatInput, ...
-│   │   ├── composables/    # useSocket.js, useTheme.js
-│   │   ├── stores/         # chat.js (Pinia)
-│   │   ├── views/          # JoinView.vue, ChatView.vue
-│   │   ├── router/         # index.js
-│   │   ├── socket.js       # shared Socket.IO client instance
-│   │   ├── style.css
+│   │   ├── components/
+│   │   ├── composables/
+│   │   ├── router/
+│   │   ├── stores/
+│   │   ├── views/
+│   │   ├── socket.js
 │   │   ├── App.vue
-│   │   └── main.js
+│   │   ├── main.js
+│   │   └── style.css
 │   └── vite.config.js
-└── server/                  # Express + Socket.IO backend
+│
+└── server/
     ├── index.js
     └── rooms.js
 ```
 
-## Getting started
+---
 
-Requires Node.js 18+.
+# 🏗️ Architecture
+
+```text
+                Vue 3 Client
+                      │
+               Socket.IO Client
+                      │
+══════════════════════╪══════════════════════
+                      │
+             Express + Socket.IO
+                      │
+      ┌───────────────┼───────────────┐
+      │               │               │
+   Rooms         Online Users    Message History
+      │               │               │
+      └───────────────┴───────────────┘
+              In-Memory Storage
+```
+
+---
+
+# 🧠 What This Project Demonstrates
+
+This project showcases several modern frontend and full-stack development concepts:
+
+- Vue 3 Composition API
+- Component-based architecture
+- State management with Pinia
+- Vue Router navigation
+- Real-time communication using Socket.IO
+- Responsive layouts with Tailwind CSS
+- Dark mode persistence
+- Reusable composables
+- Event-driven application design
+- Clean project organization
+
+---
+
+# ⚙️ Getting Started
+
+## Requirements
+
+- Node.js 18+
+- npm
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/AidaDaniyarova/vue-chat.git
 cd vue-chat
-npm run install:all
-npm run dev
 ```
 
-This starts the backend on `http://localhost:3000` and the frontend on `http://localhost:5173` together. Open the frontend URL in two different browser windows (or one normal + one incognito) to see the chat in action with two users.
-
-### Running client/server separately
+Install all dependencies:
 
 ```bash
-# terminal 1
-cd server
-npm install
-npm run dev
+npm run install:all
+```
 
-# terminal 2
-cd client
-npm install
+Start both frontend and backend:
+
+```bash
 npm run dev
 ```
 
-### Environment variables
+The application will start on:
 
-Copy the example env files and adjust if needed:
+Frontend
+
+```
+http://localhost:5173
+```
+
+Backend
+
+```
+http://localhost:3000
+```
+
+Open the frontend in two browser windows (or one normal window and one incognito window) to test real-time messaging.
+
+---
+
+# 💻 Running Frontend and Backend Separately
+
+### Backend
+
+```bash
+cd server
+
+npm install
+
+npm run dev
+```
+
+### Frontend
+
+```bash
+cd client
+
+npm install
+
+npm run dev
+```
+
+---
+
+# 🔐 Environment Variables
+
+Copy the example environment files:
 
 ```bash
 cp server/.env.example server/.env
+
 cp client/.env.example client/.env
 ```
 
-- `server/.env` - `PORT`, `CLIENT_ORIGIN` (used for CORS)
-- `client/.env` - `VITE_SOCKET_URL` (where the frontend connects for Socket.IO)
+### Backend
 
-## How it works
+```env
+PORT=3000
+CLIENT_ORIGIN=http://localhost:5173
+```
 
-- **Rooms** are fixed on the server (`server/rooms.js`) and broadcast to every client on connect. Joining a room calls `socket.join(room)` server-side; messages are scoped with `io.to(room).emit(...)`.
-- **Message history** - the server keeps the last 50 messages per room in memory and replays them to a client when it joins, so switching rooms doesn't lose context. This is in-memory only; add a database (MongoDB, Postgres) if you need persistence across server restarts.
-- **Presence** - the server tracks `socket.id → { username, room }` and emits the room's user list whenever someone joins, switches rooms, or disconnects.
-- **Typing indicator** - a `typing` event is broadcast (not echoed back to the sender) and automatically cleared client-side after 2 seconds of silence.
-- **Avatars** are generated on the fly from the username via DiceBear's API - no image uploads or storage needed.
+### Frontend
+
+```env
+VITE_SOCKET_URL=http://localhost:3000
+```
+
+---
+
+# ⚡ How It Works
+
+### Rooms
+
+Rooms are predefined on the server (`rooms.js`).
+
+Each room is joined with
+
+```js
+socket.join(room)
+```
+
+Messages are broadcast only to users inside that room.
+
+---
+
+### Message History
+
+The server stores the latest **50 messages per room** in memory.
+
+When a user joins a room, the history is automatically replayed.
+
+> Message history is temporary and resets whenever the server restarts.
+
+---
+
+### Presence
+
+The server maintains:
+
+```text
+socket.id
+        ↓
+{ username, room }
+```
+
+Whenever someone joins, changes rooms, or disconnects, the updated online user list is broadcast to every client in that room.
+
+---
+
+### Typing Indicator
+
+Typing events are sent to everyone else in the room (excluding the sender).
+
+Indicators automatically disappear after **2 seconds** of inactivity.
+
+---
+
+### Avatars
+
+User avatars are generated dynamically using the DiceBear API based solely on the username.
+
+No image uploads or storage are required.
+
+---
+
+# 🚀 Deployment
+
+## Backend (Render)
+
+1. Push the repository to GitHub.
+2. Create a new Render Web Service.
+3. Set the root directory to:
+
+```
+server/
+```
+
+Build command
+
+```bash
+npm install
+```
+
+Start command
+
+```bash
+npm start
+```
+
+Environment variable
+
+```env
+CLIENT_ORIGIN=https://your-chat.vercel.app
+```
+
+---
+
+## Frontend (Vercel)
+
+1. Import the repository.
+2. Set the root directory to:
+
+```
+client/
+```
+
+Framework preset
+
+```
+Vite
+```
+
+Environment variable
+
+```env
+VITE_SOCKET_URL=https://your-chat.onrender.com
+```
+
+Deploy.
+
+---
+
+# 📈 Future Improvements
+
+Some ideas for extending the project:
+
+- Store messages in MongoDB or PostgreSQL
+- JWT authentication
+- User accounts and profiles
+- Direct messaging
+- File & image sharing
+- Read receipts
+- Message editing and deletion
+- Notifications
+- Docker support
+- Kubernetes deployment
+- End-to-end encrypted private chats
+
+---
+
+# ⚠️ Current Limitations
+
+- Messages are stored only in memory
+- No authentication system
+- Rooms are predefined
+- No persistent database
+- No file uploads
+- No direct messaging
+
+These limitations are intentional to keep the project focused on demonstrating real-time communication with Socket.IO and Vue 3.
+
+---
+
+# 🙏 Acknowledgements
+
+This project uses several excellent open-source libraries:
+
+- Vue.js
+- Vite
+- Pinia
+- Socket.IO
+- Tailwind CSS
+- DiceBear
+- emoji-picker-element
+
+Special thanks to the Vue and open-source communities for maintaining these tools.
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+Feel free to use, modify, and build upon it for learning or portfolio purposes.
