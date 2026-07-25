@@ -1,0 +1,25 @@
+{
+  "name": "vue-chat-client",
+  "version": "1.0.0",
+  "description": "VueChat - a Discord-style real-time chat app built with Vue 3, Pinia and Socket.IO",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "emoji-picker-element": "^1.22.8",
+    "pinia": "^2.1.7",
+    "socket.io-client": "^4.7.5",
+    "vue": "^3.4.29",
+    "vue-chat": "file:..",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "tailwindcss": "^4.0.0",
+    "vite": "^5.3.1"
+  }
+}
