@@ -19,6 +19,13 @@ A production-quality, Discord-inspired real-time chat application built with **V
 
 ---
 
+# 🌐 Live Demo
+
+> **Frontend:** [Vercel](https://vue-chat-i2bw10b24-aidadaniyarovas-projects.vercel.app/chat)
+
+> **Backend API:** [Render](https://vue-chat-p7ex.onrender.com)
+---
+
 # ✨ Features
 
 - 🎨 Discord-inspired modern interface
