@@ -10,7 +10,16 @@ const PORT = process.env.PORT || 3000;
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
 
 const app = express();
-app.use(cors({ origin: CLIENT_ORIGIN }));
+app.use(
+  cors({
+    origin: CLIENT_ORIGIN,
+    credentials: true,
+  })
+);
+
+app.get("/", (req, res) => {
+  res.send("VueChat Socket.IO server is running...");
+});
 
 // Simple health check - handy for Render / uptime pings.
 app.get("/health", (req, res) => {
@@ -23,6 +32,7 @@ const io = new Server(server, {
   cors: {
     origin: CLIENT_ORIGIN,
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
